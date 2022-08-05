@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <div>
+        <button mat-button (click)="navigateDashboard()">Your Bookings</button>
+    </div>
+</mat-toolbar>
+
+<mat-grid-list [cols]="mybreakpoint" [rowHeight]="rowheight" (window:resize)="handleSize($event)" *ngIf="seats.length > 0">
+    <mat-grid-tile-header class="header">Welcome to the seats page!</mat-grid-tile-header>
+    <mat-grid-tile *ngFor="let seat of seats">
+        <app-seat-detailed class="container" [seat]="seat"></app-seat-detailed>
+    </mat-grid-tile>
+</mat-grid-list>
+<div *ngIf="seats.length == 0">
+    <h3 class="header">There is no seat available!</h3>
+</div>

@@ -1,0 +1,31 @@
+<div class="form-container form-filed" style="margin-top: 10px">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <h1>Login</h1>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div fxLayoutAlign="center">
+        <mat-form-field>
+          <input matInput placeholder="Email address" formControlName="email" />
+          <mat-error *ngIf="email?.errors?.['required']">
+            Email address is required
+          </mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="center" style="margin-top:10px">
+        <mat-form-field >
+          <input matInput type="password" placeholder="Password" formControlName="password" />
+          <mat-error *ngIf="password?.errors?.['required']">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div xLayoutAlign="center" style="margin-top:20px">
+          <button type="submit" mat-raised-button color="primary">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

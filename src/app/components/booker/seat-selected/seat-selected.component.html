@@ -1,0 +1,35 @@
+<div fxLayout="row" class="card-wrapper">
+    <mat-card class="card">
+        <mat-card-header fxLayoutAlign="center" class="block">
+            <div class="block">
+                <mat-card-title class="cell">Seat Number:</mat-card-title>
+                <mat-card-title class="cell"> {{seat.seatnumber}}</mat-card-title>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="block">
+                <mat-card-title class="cell">Seat Location:</mat-card-title>
+                <mat-card-title class="cell"> {{seat.seatlocation}}</mat-card-title>
+            </div>
+            <div class="block">
+                <mat-card-title class="cell">Seat Status:</mat-card-title>
+                <mat-card-title class="cell"> {{seat.status}}</mat-card-title>
+            </div>
+            <div class="block">
+                <mat-card-title class="cell">Seat Booker:</mat-card-title>
+                <mat-card-title class="cell"> {{seat.bookeremail}}</mat-card-title>
+            </div>
+            <div class="block">
+                <mat-card-title class="cell">Seat Start Date of Booking:</mat-card-title>
+                <mat-card-title class="cell"> {{ convertDate(seat.start) }} </mat-card-title>
+            </div>
+            <div class="block">
+                <mat-card-title class="cell">Seat End Date of Booking:</mat-card-title>
+                <mat-card-title class="cell">{{ convertDate(seat.end) }}</mat-card-title>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button routerLink="/user-seats">Back</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

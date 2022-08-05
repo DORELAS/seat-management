@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "seat-booking-management": {
+      "hosting": {
+        "seat-booking-management": [
+          "seat-booking-management"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "seat-booking-management"
+  }
+}

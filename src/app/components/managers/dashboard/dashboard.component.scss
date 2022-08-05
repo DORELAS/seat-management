@@ -1,0 +1,37 @@
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    .btn {
+        margin: 0px 5px;
+    }
+}
+
+.filter-menu {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(70%, 30%);
+    .form-field {
+        width: 99%;
+        margin: 5px;
+    }
+    .form-date-field {
+        width: 41%;
+        margin: 5px;
+    }
+}
+@media screen and (max-width: 650px) {
+    .filter-menu {
+        grid-auto-flow: row;
+        .form-date-field {
+            width: 99%;
+        }
+
+    }
+}
+
+.btn-action {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(50%, 50%));
+}

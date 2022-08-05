@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutGap="16px" class="card-container">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Seat {{seat.seat.seatnumber}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>
+            {{seat.seat.status}}
+            </p>
+            <p>
+            {{seat.seat.seatlocation}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions class="actions">
+            <button mat-button (click)="seatSelected(seat.seat)" color="accent">Seat Details</button>
+            <button mat-button (click)="bookSeat(seat)" [disabled]="seat.seat.status === 'Booked'" color="warn">Book Seat</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

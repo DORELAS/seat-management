@@ -1,0 +1,58 @@
+<div class="form-container form-filed" style="margin-top: 10px">
+    <div fxLayout="row" fxLayoutAlign="center">
+        <h1>{{title}} Seat</h1>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center">
+        <form [formGroup]="seatForm" (ngSubmit)="submit()">
+            <div fxLayoutAlign="center">
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Number" formControlName="seatnumber" />
+                    <mat-error *ngIf="seatnumber?.errors?.['required']">
+                        Seat number is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayoutAlign="center">
+                <mat-form-field>
+                    <input matInput type="test" placeholder="Location" formControlName="seatlocation" />
+                    <mat-error *ngIf="seatlocation?.errors?.['required']">
+                        Seat location is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <mat-label>Status</mat-label>
+                    <mat-select  formControlName="status">
+                        <mat-option *ngFor="let seat of seatStatus" [value]="seat.value">
+                            {{seat.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div fxLayoutAlign="center">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter a date range for booking</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                        <input matStartDate formControlName="start" placeholder="Start date">
+                        <input matEndDate formControlName="end" placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+            </div>
+            <div fxLayoutAlign="center">
+                <mat-form-field>
+                    <input matInput type="email" placeholder="Booker Email" formControlName="bookeremail" />
+                    <mat-error *ngIf="bookerEmail?.errors?.['required']">
+                        Booker email is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div xLayoutAlign="center" class="margin-top">
+                <button type="submit" mat-raised-button color="primary">{{title}}</button>
+            </div>
+        </form>
+    </div>
+</div>

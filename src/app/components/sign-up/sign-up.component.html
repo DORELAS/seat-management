@@ -1,0 +1,72 @@
+<div class="form-container"  style="margin-top: 10px">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <h1>Sign Up!</h1>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <form [formGroup]="signUpForm" (ngSubmit)="submit()">
+      <div fxLayoutAlign="center">
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="username" />
+          <mat-error *ngIf="username?.errors?.['required']">
+            Username is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="center">
+        <mat-form-field>
+          <input matInput placeholder="Email address" formControlName="email" />
+          <mat-error *ngIf="email?.errors?.['required']">
+            Email address is required
+          </mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">
+            Please enter a valid email address
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="center">
+        <mat-form-field appearance="fill">
+          <mat-label>User Role</mat-label>
+          <mat-select  formControlName="role">
+            <mat-option *ngFor="let user of userRoles" [value]="user.value">
+              {{user.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="center">
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <mat-error *ngIf="password?.errors?.['required']">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="center">
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+          />
+          <mat-error *ngIf="confirmPassword?.errors?.['required']">
+            Confirm Password is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="center">
+        <mat-error *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+            Passwords should match
+        </mat-error>
+      </div>
+      <div xLayoutAlign="center" style="margin-top:20px">
+        <button type="submit" mat-raised-button color="primary">Sign Up!</button>
+      </div>
+    </form>
+  </div>
+</div>

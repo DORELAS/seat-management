@@ -1,0 +1,17 @@
+<mat-toolbar color="primary"  class="menu">
+    <div class="btn">
+        <a class="home-link" routerLink="/user-seats">Home</a>
+    </div>
+    <div class="btn">
+        <button color="warn" mat-raised-button (click)="logout()">Log out!</button>
+    </div>
+</mat-toolbar>
+
+<mat-grid-list [cols]="mybreakpoint" [rowHeight]="rowheight" (window:resize)="handleSize($event)" *ngIf="seats.length > 0">
+    <mat-grid-tile *ngFor="let seat of seats">
+        <app-seat-detailed class="container" [seat]="seat"></app-seat-detailed>
+    </mat-grid-tile>
+</mat-grid-list>
+<div *ngIf="seats.length == 0">
+    <h3 class="header">No Seat Has Been Booked!</h3>
+</div>

@@ -1,0 +1,57 @@
+<mat-toolbar color="primary" class="menu">
+    <div class="btn">
+        <button color="accent" mat-raised-button (click)="openSeat('Create', null)">Add Seat</button>
+    </div>
+    <div class="btn">
+        <button color="warn" mat-raised-button (click)="logout()">Log out!</button>
+    </div>
+</mat-toolbar>
+
+<div class="filter-menu">
+    <mat-form-field class="form-field">
+        <mat-select [formControl]="seatControl" placeholder="Enter the seat number">
+            <mat-option>
+                <ngx-mat-select-search 
+                [formControl]="seatFilter" 
+                (ngModelChange)="filterMyOptions($event)"
+                placeholderLabel="Find Seat..."
+                noEntriesFoundLabel=" "
+                ></ngx-mat-select-search>
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-date-field">
+        <mat-label>Select a date</mat-label>
+        <input (dateChange)="changeDateEvent($event)"  matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</div>
+
+<div *ngIf="seats.length > 0">
+    <mat-grid-list [cols]="mybreakpoint" [rowHeight]="rowheight" (window:resize)="handleSize($event)" *ngIf="seats.length > 0">
+        <mat-grid-tile *ngFor="let seat of seats">
+            <div fxLayout="row" fxLayoutGap="16px" class="card-container">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <mat-card-title>Seat {{seat.seatnumber}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                        {{seat.status}}
+                        </p>
+                        <p>
+                        {{seat.seatlocation}}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions class="btn-action">
+                        <button mat-raised-button (click)="openSeat('Update', seat)" color="accent">Update Seat</button>
+                        <button mat-raised-button (click)="deleteSeat(seat)" color="warn">Delete Seat</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
