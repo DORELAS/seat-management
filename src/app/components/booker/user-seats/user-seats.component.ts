@@ -4,7 +4,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { Seat } from 'src/app/models/seat';
 import { ProfileUser } from 'src/app/models/user';
 import { AllRequestsService } from 'src/app/services/all_requests/all-requests.service';
-import { TransferDataService } from 'src/app/services/transfer-data/transfer-data.service';
+
 
 @Component({
   selector: 'app-user-seats',
@@ -22,7 +22,6 @@ export class UserSeatsComponent implements OnInit {
   constructor(private cd: ChangeDetectorRef,
               private requests: AllRequestsService,
               private router: Router,
-              private transfer: TransferDataService,
               private toast: HotToastService,) {
       this.user = JSON.parse(localStorage.getItem('user')!);
       this.controlSize(window.innerWidth);

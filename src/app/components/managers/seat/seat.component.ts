@@ -35,7 +35,7 @@ export class SeatComponent implements OnInit {
       status: new FormControl(this.seatStatus[0].value, [Validators.required]),
       start: new FormControl(''),
       end: new FormControl(''),
-      bookeremail: new FormControl('',[ Validators.required, Validators.email]),
+      bookeremail: new FormControl('',[Validators.email]),
     }
   );
   constructor(private requests: AllRequestsService,

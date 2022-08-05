@@ -45,9 +45,6 @@
             <div fxLayoutAlign="center">
                 <mat-form-field>
                     <input matInput type="email" placeholder="Booker Email" formControlName="bookeremail" />
-                    <mat-error *ngIf="bookerEmail?.errors?.['required']">
-                        Booker email is required
-                    </mat-error>
                 </mat-form-field>
             </div>
             <div xLayoutAlign="center" class="margin-top">

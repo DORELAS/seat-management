@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } 
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Seat } from 'src/app/models/seat';
+import { ProfileUser } from 'src/app/models/user';
 import { AllRequestsService } from 'src/app/services/all_requests/all-requests.service';
 
 @Component({
@@ -12,10 +13,13 @@ import { AllRequestsService } from 'src/app/services/all_requests/all-requests.s
 })
 export class SeatDetailedComponent implements OnInit {
   @Input() seat: any;
+  user: ProfileUser;
   constructor(private requests: AllRequestsService,
               private cd: ChangeDetectorRef,
               private router: Router,
-              private toast: HotToastService,) { }
+              private toast: HotToastService,) {
+    this.user = JSON.parse(localStorage.getItem('user')!);
+  }
 
   ngOnInit(): void {
   }
@@ -27,7 +31,7 @@ export class SeatDetailedComponent implements OnInit {
       status: "Booked",
       start: seat.seat.start,
       end: seat.seat.end,
-      bookeremail: seat.seat.bookeremail,
+      bookeremail: this.user.email,
     }
     this.requests.updateSeat(seat.key, createSeat).subscribe({
         next: (response) => {

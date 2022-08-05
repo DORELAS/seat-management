@@ -17,6 +17,7 @@ export class UserdashboardComponent implements OnInit {
 
   ngOnInit() {
     this.seats = JSON.parse(localStorage.getItem('bookings')!);
+    console.log(this.seats);
   }
 
   handleSize(event: any) {
